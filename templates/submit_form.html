@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>URL Shorty</title>
+</head>
+<body>
+<div class="container">
+
+<h1>URL Shorty</h1>
+
+<p> Pass in a long URL to get a short URL that will act as a redirect, or
+    pass in a URL you've previously shortened here to get it's original long-form version.
+<br>
+    Currently we can only shorten links to 18 characters. If your destination link is already shorter than that,
+    you may want to reconsider.
+</p>
+<br>
+    <!-- Form to Shorten URL from Long Version -->
+    <form action="shorten/{{ long_url }}">
+        <label for="long2short">Get Short URL: </label>
+        <input type="text" id="long2short" name="long_url" placeholder="Long URL to Shorten" required="required">
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <br>
+
+    <!-- Form to Lengthen URL from Short Version -->
+    <form action="lengthen/{{ short_url }}">
+        <label for="short2long">Get Long URL: </label>
+        <input type="text" id="short2long" name="short_url" placeholder="Short URL to Lengthen" required="required">
+        <input type="submit" value="Submit"><br>
+    </form>
+
+    <br>
+
+    {% if short_url_text or long_url_text %}
+    <h2>RESULTS</h2>
+    {% endif %}
+
+    <!-- Display Values -->
+
+    {% if short_url_text %}
+        <h3>Short URL: </h3>
+        {{ short_url_text }} </h3>
+    {% endif %}
+    {% if long_url_text %}
+        <h3>Long-Form URL: </h3>
+        {{ long_url_text }}
+    {% endif %}
+
+</div>
+</body>
+</html>
